@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Other colors -->
+    <color name="toolbar_color">#FF4500A0</color> <!-- Darker shade of the original color -->
+    <color name="toolbar_title_color">#FFFFFF</color> <!-- Optional: Toolbar title color -->
+    <color name="button_background_color">#FF4500A0</color> <!-- Replace with your desired color -->
+    <color name="button_text_color">#FFFFFF</color> <!-- Optional: Button text color -->
 </resources>
