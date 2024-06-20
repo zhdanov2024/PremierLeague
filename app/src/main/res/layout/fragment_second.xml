@@ -10,7 +10,6 @@
         <variable
             name="listener"
             type="com.androidacademy.premierleaguefixtures.SecondFragment" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,12 +38,14 @@
                     android:layout_height="wrap_content"
                     android:text="Match Number:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.mathNumber)}" />
+                    android:text="@{String.valueOf(matchDetails.mathNumber)}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -56,12 +57,14 @@
                     android:layout_height="wrap_content"
                     android:text="Round Number:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.roundNumber)}" />
+                    android:text="@{String.valueOf(matchDetails.roundNumber)}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -73,12 +76,14 @@
                     android:layout_height="wrap_content"
                     android:text="Date (UTC):"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{matchDetails.dateUtc}" />
+                    android:text="@{matchDetails.dateUtc}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -90,12 +95,14 @@
                     android:layout_height="wrap_content"
                     android:text="Location:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{matchDetails.location}" />
+                    android:text="@{matchDetails.location}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -107,12 +114,14 @@
                     android:layout_height="wrap_content"
                     android:text="Home Team:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{matchDetails.homeTeam}" />
+                    android:text="@{matchDetails.homeTeam}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -124,12 +133,14 @@
                     android:layout_height="wrap_content"
                     android:text="Away Team:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{matchDetails.awayTeam}" />
+                    android:text="@{matchDetails.awayTeam}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -141,12 +152,14 @@
                     android:layout_height="wrap_content"
                     android:text="Group:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{matchDetails.group != null ? matchDetails.group : `No Group`}" />
+                    android:text="@{matchDetails.group != null ? matchDetails.group : `No Group`}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -158,12 +171,14 @@
                     android:layout_height="wrap_content"
                     android:text="Home Team Score:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.homeTeamScore)}" />
+                    android:text="@{String.valueOf(matchDetails.homeTeamScore)}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
             <TableRow
@@ -175,12 +190,14 @@
                     android:layout_height="wrap_content"
                     android:text="Away Team Score:"
                     android:textStyle="bold"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.awayTeamScore)}" />
+                    android:text="@{String.valueOf(matchDetails.awayTeamScore)}"
+                    android:textColor="@android:color/white" />
             </TableRow>
 
         </TableLayout>
