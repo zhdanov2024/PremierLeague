@@ -10,8 +10,12 @@
         android:label="Football Matches"
         tools:layout="@layout/fragment_first">
         <action
-            android:id="@+id/action_first_to_second"
-            app:destination="@id/secondFragment" />
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment">
+            <argument
+                android:name="matchDetails"
+                app:argType="com.androidacademy.premierleaguefixtures.MatchDetails" />
+        </action>
     </fragment>
 
     <fragment
@@ -20,7 +24,7 @@
         android:label="Match Details"
         tools:layout="@layout/fragment_second">
         <action
-            android:id="@+id/action_second_to_first"
+            android:id="@+id/action_secondFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
     </fragment>
 
