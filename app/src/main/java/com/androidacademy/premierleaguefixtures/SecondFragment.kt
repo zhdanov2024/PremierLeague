@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.androidacademy.premierleaguefixtures.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
+    private lateinit var matchDetails: MatchDetails
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,22 +23,9 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val matchDetails = MatchDetails(
-            mathNumber = 1,
-            roundNumber = 1,
-            dateUtc = "2024-08-13 19:00:00z",
-            location = "Manchester United Stadium",
-            homeTeam = "Manchester United",
-            awayTeam = "Arsenal",
-            group = null,
-            homeTeamScore = 2,
-            awayTeamScore = 0
-        )
-
-        binding.matchDetails = matchDetails
-
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_second_to_first)
+        arguments?.let {
+            matchDetails = it.getParcelable("matchDetails")!!
+            binding.matchDetails = matchDetails
         }
     }
 

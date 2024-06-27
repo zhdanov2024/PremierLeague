@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="matchDetails"
             type="com.androidacademy.premierleaguefixtures.MatchDetails" />
-        <variable
-            name="listener"
-            type="com.androidacademy.premierleaguefixtures.SecondFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,199 +13,83 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <TableLayout
-            android:id="@+id/tableLayout"
+        <TextView
+            android:id="@+id/textViewMatchNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:text="@{String.valueOf(matchDetails.matchNumber)}"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintVertical_bias="0.5">
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp"/>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Match Number:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.mathNumber)}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Round Number:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.roundNumber)}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date (UTC):"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{matchDetails.dateUtc}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{matchDetails.location}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home Team:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{matchDetails.homeTeam}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Away Team:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{matchDetails.awayTeam}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Group:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{matchDetails.group != null ? matchDetails.group : `No Group`}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home Team Score:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.homeTeamScore)}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Away Team Score:"
-                    android:textStyle="bold"
-                    android:paddingEnd="8dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(matchDetails.awayTeamScore)}"
-                    android:textColor="@android:color/white" />
-            </TableRow>
-
-        </TableLayout>
-
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/textViewRoundNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Go back"
-            app:layout_constraintTop_toBottomOf="@id/tableLayout"
+            android:text="@{String.valueOf(matchDetails.roundNumber)}"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMatchNumber"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewDateUtc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{matchDetails.dateUtc}"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRoundNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{matchDetails.location}"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDateUtc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewHomeTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{matchDetails.homeTeam}"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewAwayTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{matchDetails.awayTeam}"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHomeTeam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Score: ${matchDetails.homeScore} - ${matchDetails.awayScore}`}"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAwayTeam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
