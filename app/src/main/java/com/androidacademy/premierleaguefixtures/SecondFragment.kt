@@ -10,7 +10,6 @@ class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
-    private lateinit var matchDetails: MatchDetails
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,9 +22,10 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.let {
-            matchDetails = it.getParcelable("matchDetails")!!
-            binding.matchDetails = matchDetails
+        val matchDetails = arguments?.getParcelable<MatchDetails>("matchDetails")
+
+        matchDetails?.let {
+            binding.matchDetails = it
         }
     }
 

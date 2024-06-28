@@ -6,32 +6,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.premierleaguefixtures.databinding.ItemMatchBinding
 
 class MatchAdapter(
-    private val matchList: List<MatchDetails>,
-    private val clickListener: OnMatchClickListener
+    private var matches: List<MatchDetails>,
+    private val clickListener: (MatchDetails) -> Unit
 ) : RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
-    interface OnMatchClickListener {
-        fun onMatchClick(match: MatchDetails)
-    }
-
-    inner class MatchViewHolder(private val binding: ItemMatchBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(match: MatchDetails) {
-            binding.matchDetails = match
-            binding.root.setOnClickListener {
-                clickListener.onMatchClick(match)
-            }
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemMatchBinding.inflate(inflater, parent, false)
+        val binding = ItemMatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MatchViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
-        holder.bind(matchList[position])
+        holder.bind(matches[position], clickListener)
     }
 
-    override fun getItemCount(): Int = matchList.size
+    override fun getItemCount() = matches.size
+
+    fun updateMatches(newMatches: List<MatchDetails>) {
+        matches = newMatches
+        notifyDataSetChanged()
+    }
+
+    class MatchViewHolder(private val binding: ItemMatchBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(match: MatchDetails, clickListener: (MatchDetails) -> Unit) {
+            binding.matchDetails = match
+            binding.root.setOnClickListener {
+                clickListener(match)
+            }
+            binding.executePendingBindings()
+        }
+    }
 }

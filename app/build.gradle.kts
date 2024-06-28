@@ -55,4 +55,11 @@ dependencies {
     implementation (libs.androidx.recyclerview)
     implementation (libs.androidx.cardview)
     implementation (libs.androidx.viewbinding)
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation ("com.squareup.moshi:moshi:1.12.0")
+    implementation ("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
 }
