@@ -12,103 +12,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        tools:context=".SecondFragment">
 
-        <TextView
-            android:id="@+id/textViewMatchNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"MatchNumber: " + matchDetails.matchNumber}'
-            android:textStyle="bold"
-            android:textColor="@color/white"
+        <androidx.compose.ui.platform.ComposeView
+            android:id="@+id/composeView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewRoundNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"RoundNumber: " + matchDetails.roundNumber}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewMatchNumber"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewDateUtc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"Date: " + matchDetails.dateUtc}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRoundNumber"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"Location: " + matchDetails.location}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDateUtc"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewHomeTeam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"HomeTeam: " + matchDetails.homeTeam}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLocation"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewAwayTeam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"AwayTeam: " + matchDetails.awayTeam}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewHomeTeam"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewHomeTeamScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"HomeTeamScore: " + matchDetails.homeTeamScore}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAwayTeam"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/textViewAwayTeamScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"AwayTeamScore: " + matchDetails.awayTeamScore}'
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/textViewHomeTeamScore"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

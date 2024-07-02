@@ -5,11 +5,14 @@ plugins {
 }
 
 buildscript {
+    val compose_version by extra { "1.5.0" } // Use the latest stable or beta version that supports Kotlin 1.9.0
+    val kotlin_version by extra { "1.9.0" }
     repositories {
         google()
     }
     dependencies {
         val nav_version = "2.7.7"
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
