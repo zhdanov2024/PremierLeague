@@ -2,24 +2,38 @@ package com.androidacademy.premierleaguefixtures
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MatchViewModel(private val repository: MatchRepository) : ViewModel() {
 
-    private val _matches = MutableStateFlow<Result<List<MatchDetails>>>(Result.Loading)
-    val matches: StateFlow<Result<List<MatchDetails>>> = _matches
+    private val _searchQuery = MutableStateFlow("")
+    val matches: Flow<Result<List<MatchDetails>>> = _searchQuery
+        .flatMapLatest { query ->
+            repository.getMatches()
+                .map { matches ->
+                    val filteredMatches = if (query.isEmpty()) {
+                        matches
+                    } else {
+                        matches.filter {
+                            it.homeTeam.contains(query, ignoreCase = true) || it.awayTeam.contains(query, ignoreCase = true)
+                        }
+                    }
+                    Result.Success(filteredMatches) as Result<List<MatchDetails>>
+                }
+                .catch { e -> emit(Result.Error(e)) }
+        }
+        .stateIn(viewModelScope, SharingStarted.Lazily, Result.Loading)
 
-    init {
-        fetchMatches()
+    fun searchMatches(query: String) {
+        viewModelScope.launch {
+            _searchQuery.emit(query)
+        }
     }
 
-    private fun fetchMatches() {
+    init {
         viewModelScope.launch {
-            repository.getMatches().collect {
-                _matches.value = it
-            }
+            repository.refreshMatches()
         }
     }
 }

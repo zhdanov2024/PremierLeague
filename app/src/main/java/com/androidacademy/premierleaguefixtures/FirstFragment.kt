@@ -4,6 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,8 +29,9 @@ class FirstFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MatchViewModel by lazy {
-        MatchViewModel(MatchRepository(NetworkModule.matchApiService))
+        MatchViewModel(MatchRepository(AppDatabase.getDatabase(requireContext()).matchDetailsDao(), NetworkModule.matchApiService))
     }
+    private lateinit var adapter: MatchAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +44,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = MatchAdapter(emptyList()) { match ->
+        adapter = MatchAdapter(emptyList()) { match ->
             val bundle = Bundle().apply {
                 putParcelable("matchDetails", match)
             }
@@ -41,19 +54,63 @@ class FirstFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(context, 3) // 3 columns
         binding.recyclerView.adapter = adapter
 
+        binding.composeView.setContent {
+            MaterialTheme {
+                Surface {
+                    Column {
+                        SearchBar { query ->
+                            viewModel.searchMatches(query)
+                        }
+                        MatchList()
+                    }
+                }
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.matches.collect { result ->
                 when (result) {
                     is Result.Loading -> {
+                        // need to add loading indicator maybe
                     }
                     is Result.Success -> {
                         adapter.updateMatches(result.data)
                     }
                     is Result.Error -> {
+                        // need to handle error message
                     }
                 }
             }
         }
+    }
+
+    @Composable
+    fun SearchBar(onSearch: (String) -> Unit) {
+        var query by remember { mutableStateOf("") }
+
+        BasicTextField(
+            value = query,
+            onValueChange = {
+                query = it
+                onSearch(it)
+            },
+            textStyle = LocalTextStyle.current.copy(color = Color.Black),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 50.dp)
+        )
+        if (query.isEmpty()) {
+            Text(
+                text = "write here the name of the team",
+                style = LocalTextStyle.current.copy(color = Color.Gray),
+                modifier = Modifier.padding(start = 60.dp)
+            )
+        }
+
+    }
+
+    @Composable
+    fun MatchList() {
+        // Not implemented yet some UI work
+
     }
 
     override fun onDestroyView() {
