@@ -100,8 +100,8 @@ class FirstFragment : Fragment() {
         if (query.isEmpty()) {
             Text(
                 text = "write here the name of the team",
-                style = LocalTextStyle.current.copy(color = Color.Gray),
-                modifier = Modifier.padding(start = 60.dp)
+                style = LocalTextStyle.current.copy(color = Color.Black),
+                modifier = Modifier.padding(start = 70.dp)
             )
         }
 
